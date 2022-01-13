@@ -1,0 +1,59 @@
+/*
+COMB(exclam, KC_EXCLAIM, KC_Q, KC_A) // !
+COMB(at, KC_AT, KC_W, KC_S) // @
+COMB(hash, KC_HASH, KC_E, KC_D) // #
+COMB(dollar, KC_DOLLAR, KC_R, KC_F) // $
+COMB(percent, KC_PERCENT, KC_T, KC_G) // %
+COMB(circumflex, KC_CIRCUMFLEX, KC_Y, KC_H) // ^
+COMB(ampersand, KC_AMPERSAND, KC_U, KC_J) // &
+COMB(asterisk, KC_ASTERISK, KC_I, KC_K) // *
+COMB(left_paren, KC_LEFT_PAREN, KC_O, KC_L) // (
+COMB(right_paren, KC_RIGHT_PAREN, KC_P, KC_SCOLON) // )
+*/
+
+COMB(num1, KC_1, KC_Q, KC_A)
+COMB(num2, KC_2, KC_W, KC_S)
+COMB(num3, KC_3, KC_E, KC_D)
+COMB(num4, KC_4, KC_R, KC_F)
+COMB(num5, KC_5, KC_T, KC_G)
+COMB(num6, KC_6, KC_Y, KC_H)
+COMB(num7, KC_7, KC_U, KC_J)
+COMB(num8, KC_8, KC_I, KC_K)
+COMB(num9, KC_9, KC_O, KC_L)
+COMB(num0, KC_0, KC_P, KC_SCOLON)
+
+COMB(left_bracket_ez, KC_LBRACKET, KC_R, KC_T) // [
+COMB(right_bracket_ez, KC_RBRACKET, KC_Y, KC_U) // ]
+COMB(left_paren_ez, KC_LEFT_PAREN, KC_F, KC_G) // (
+COMB(right_paren_ez, KC_RIGHT_PAREN, KC_H, KC_J) // )
+COMB(left_curly_ez, KC_LCBR, KC_V, KC_B) // {
+COMB(right_curly_ez, KC_RCBR, KC_N, KC_M) // }
+
+COMB(hyphen, KC_MINUS, KC_J, KC_M) // -
+COMB(equal, KC_EQUAL, KC_K, KC_COMMA) // =
+
+/*
+COMB(grave, KC_GRAVE, KC_TAB, KC_Q) // `
+COMB(tilde, KC_TILDE, KC_TAB, KC_W) // ~
+COMB(tilde2, KC_TILDE, KC_TAB, KC_Q, KC_W) // ~
+COMB(hyphen, KC_MINUS, KC_J, KC_K) // -
+COMB(underscore, KC_UNDERSCORE, KC_J, KC_L) // _
+COMB(underscore2, KC_UNDERSCORE, KC_J, KC_K, KC_L) // _
+COMB(equal, KC_EQUAL, KC_K, KC_L) // =
+COMB(plus, KC_PLUS, KC_K, KC_SCLN) // +
+COMB(plus2, KC_PLUS, KC_K, KC_L, KC_SCLN) // +
+COMB(backslash, KC_BSLASH, KC_SCLN, KC_QUOTE) // '\'
+COMB(pipe, KC_PIPE, KC_L, KC_QUOTE) // |
+*/
+
+/*
+COMB(zx_ctrl, OSM(MOD_LCTL), KC_Z, KC_X)
+COMB(xc_shift, OSM(MOD_LSFT), KC_X, KC_C)
+COMB(cv_gui, OSM(MOD_LGUI), KC_C, KC_V)
+COMB(xv_alt, OSM(MOD_LALT), KC_X, KC_V)
+COMB(dot_slash_ctrl, OSM(MOD_LCTL), KC_DOT, KC_SLASH)
+COMB(comma_dot_shift, OSM(MOD_LSFT), KC_COMMA, KC_DOT)
+COMB(m_comma_gui, OSM(MOD_LGUI), KC_M, KC_COMMA)
+COMB(m_dot_alt, OSM(MOD_LALT), KC_M, KC_DOT)
+COMB(zxv_ctrl_alt, OSM(MOD_LCTL | MOD_LALT), KC_Z, KC_X, KC_V)
+*/
