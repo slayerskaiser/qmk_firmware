@@ -106,19 +106,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Oneproduct
  * ,-----------------------------------------------------------------------------------.
- * | Tab  |   P  |   L  |   D  |   W  |   G  |   J  |   X  |   O  |   Y  |   Q  | Bksp |
+ * | Tab  |   B  |   L  |   D  |   W  |   G  |   J  |   ,  |   O  |   Y  |   Q  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Esc  |   N  |   R  |   S  |   T  |   M  |   U  |   A  |   E  |   I  |   H  |  "   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   Z  |   C  |   F  |   V  |   B  |   ,  |   .  |   ?  |   ;  |   K  |Enter |
+ * | Shift|   P  |   Z  |   C  |   F  |   V  |   X  |   .  |   ;  |   /  |   K  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Mouse| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_ONEPRODUCT] = LAYOUT_planck_grid(
-    KC_TAB,  KC_P,    KC_L,    KC_D,    KC_W,    KC_G,    KC_J,    KC_X,    KC_O,    KC_Y,    KC_Q,    KC_BSPC,
+    KC_TAB,  KC_B,    KC_L,    KC_D,    KC_W,    KC_G,    KC_J,    KC_COMM, KC_O,    KC_Y,    KC_Q,    KC_BSPC,
     C_ESC,   KC_N,    KC_R,    KC_S,    KC_T,    KC_M,    KC_U,    KC_A,    KC_E,    KC_I,    KC_H,    KC_QUOT,
-    KC_LSFT, KC_Z,    KC_C,    KC_F,    KC_V,    KC_B,    KC_COMM, KC_DOT,  KC_SLSH, KC_SCLN, KC_K,    KC_SFTENT,
+    KC_LSFT, KC_P,    KC_Z,    KC_C,    KC_F,    KC_V,    KC_X,    KC_DOT,  KC_SCLN, KC_SLSH, KC_K,    KC_SFTENT,
     MOUSE,   KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|TermOn|TermOf|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      |Combo+|Combo-|      |
+ * |      |      |      |      |      |             |      |      |Combo-|Combo+|      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_grid(
@@ -439,15 +439,13 @@ bool music_mask_user(uint16_t keycode) {
 const key_override_t prev_track_override = ko_make_basic(MOD_MASK_GUI, KC_MNXT, KC_MPRV);
 const key_override_t mute_volup_override = ko_make_basic(MOD_MASK_GUI, KC_VOLU, KC_MUTE);
 const key_override_t mute_voldown_override = ko_make_basic(MOD_MASK_GUI, KC_VOLD, KC_MUTE);
-const key_override_t oneproduct_slash_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_SLSH, KC_SLSH, 1 << _ONEPRODUCT);
-const key_override_t oneproduct_qmark_override = ko_make_with_layers_and_negmods(0, KC_SLSH, KC_QUESTION, 1 << _ONEPRODUCT, MOD_MASK_SHIFT);
+// const key_override_t oneproduct_slash_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_SLSH, KC_SLSH, 1 << _ONEPRODUCT);
+// const key_override_t oneproduct_qmark_override = ko_make_with_layers_and_negmods(0, KC_SLSH, KC_QUESTION, 1 << _ONEPRODUCT, MOD_MASK_SHIFT);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &prev_track_override,
     &mute_volup_override,
     &mute_voldown_override,
-    &oneproduct_slash_override,
-    &oneproduct_qmark_override,
     NULL
 };
 
