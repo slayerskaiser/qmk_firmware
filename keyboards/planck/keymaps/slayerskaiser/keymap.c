@@ -130,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   @  |   #  |   $  |      |      |   %  |   ^  |   &  |   *  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |      |   {  |   [  |   (  |   -  |   =  |   )  |   ]  |   }  |   |  |  \   |
+ * | Del  |      |   {  |   [  |   (  |   -  |   =  |   )  |   ]  |   }  |   |  |  |   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |   _  |   +  |      |      |      |      |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_planck_grid(
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  XXXXXXX, XXXXXXX, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_BSPC,
-    KC_DEL,  XXXXXXX, KC_LCBR, KC_LBRC, KC_LPRN, KC_MINS, KC_EQL,  KC_RPRN, KC_RBRC, KC_RCBR, KC_PIPE, KC_BSLS,
+    KC_DEL,  XXXXXXX, KC_LCBR, KC_LBRC, KC_LPRN, KC_MINS, KC_EQL,  KC_RPRN, KC_RBRC, KC_RCBR, KC_PIPE, KC_PIPE,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_UNDS, KC_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT ,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
