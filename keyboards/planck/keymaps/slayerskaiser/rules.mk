@@ -1,3 +1,4 @@
+BOOTLOADER = stm32-dfu
 SRC += muse.c
 VPATH += keyboards/gboards
 COMMAND_ENABLE = no
