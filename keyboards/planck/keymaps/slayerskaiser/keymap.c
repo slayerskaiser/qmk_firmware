@@ -44,13 +44,13 @@ enum planck_keycodes {
 };
 
 #define LOWER MO(_LOWER)
-// #define RAISE MO(_RAISE)
+#define RAISE MO(_RAISE)
 // #define LOWER LT(_LOWER, KC_ENTER)
-#define RAISE LT(_RAISE, KC_ENTER)
+// #define RAISE LT(_RAISE, KC_ENTER)
 #define MOVE MO(_MOVEMENT)
 #define C_ESC LCTL_T(KC_ESC)
-// #define SFT_ENT RSFT_T(KC_ENTER)
-#define SFT_ENT KC_RSFT
+#define SFT_ENT RSFT_T(KC_ENTER)
+// #define SFT_ENT KC_RSFT
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |      |      |   %  |   ^  |   &  |   *  | Bksp |
+ * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Del  |      |   {  |   [  |   (  |   -  |   =  |   )  |   ]  |   }  |   |  |  \   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -138,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  XXXXXXX, XXXXXXX, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_BSPC,
+    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
     KC_DEL,  XXXXXXX, KC_LCBR, KC_LBRC, KC_LPRN, KC_MINS, KC_EQL,  KC_RPRN, KC_RBRC, KC_RCBR, KC_PIPE, KC_BSLS,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_UNDS, KC_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT ,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
