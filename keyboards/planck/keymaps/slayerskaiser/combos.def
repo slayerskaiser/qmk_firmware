@@ -1,3 +1,33 @@
+COMB(circumflex, KC_CIRCUMFLEX, KC_W, DT_EXLM)
+COMB(dollar, KC_DOLLAR, DT_EXLM, KC_SCLN)
+// COMB(num_word, NUMWORD, KC_T, KC_A)
+COMB(num_word, NUMWORD, KC_W, KC_SCLN)
+COMB(swap_space_e, SWP_S_E, KC_SLSH, KC_MINS)
+
+/*
+COMB(num1, KC_1, ENT_NAV, KC_A)
+COMB(num3, KC_3, ENT_NAV, KC_N)
+COMB(num5, KC_5, ENT_NAV, KC_I)
+COMB(num7, KC_7, ENT_NAV, KC_O)
+COMB(num9, KC_9, ENT_NAV, KC_W)
+COMB(num0, KC_0, BSP_MOD, KC_T)
+COMB(num2, KC_2, BSP_MOD, KC_H)
+COMB(num4, KC_4, BSP_MOD, KC_S)
+COMB(num6, KC_6, BSP_MOD, KC_R)
+COMB(num8, KC_8, BSP_MOD, KC_D)
+*/
+
+/*
+COMB(left_paren, KC_LEFT_PAREN, BSP_MOD, KC_A) // (
+COMB(right_paren, KC_RIGHT_PAREN, BSP_MOD, KC_I) // )
+COMB(left_angle, KC_LEFT_ANGLE_BRACKET, BSP_MOD, KC_N) // <
+COMB(right_angle, KC_RIGHT_ANGLE_BRACKET, BSP_MOD, KC_O) // >
+COMB(left_bracket, KC_LEFT_BRACKET, BSP_MOD, DT_EXLM) // [
+COMB(right_bracket, KC_RIGHT_BRACKET, BSP_MOD, KC_SCLN) // ]
+COMB(left_brace, KC_LEFT_CURLY_BRACE, BSP_MOD, KC_W) // {
+COMB(right_brace, KC_RIGHT_CURLY_BRACE, BSP_MOD, KC_MINS) // }
+*/
+
 /*
 COMB(exclam, KC_EXCLAIM, KC_Q, KC_A) // !
 COMB(at, KC_AT, KC_W, KC_S) // @
@@ -11,6 +41,7 @@ COMB(left_paren, KC_LEFT_PAREN, KC_O, KC_L) // (
 COMB(right_paren, KC_RIGHT_PAREN, KC_P, KC_SCOLON) // )
 */
 
+/*
 COMB(num1, KC_1, KC_Q, KC_A)
 COMB(num2, KC_2, KC_W, KC_S)
 COMB(num3, KC_3, KC_E, KC_D)
@@ -21,16 +52,21 @@ COMB(num7, KC_7, KC_U, KC_J)
 COMB(num8, KC_8, KC_I, KC_K)
 COMB(num9, KC_9, KC_O, KC_L)
 COMB(num0, KC_0, KC_P, KC_SCOLON)
+*/
 
+/*
 COMB(left_bracket_ez, KC_LBRACKET, KC_R, KC_T) // [
 COMB(right_bracket_ez, KC_RBRACKET, KC_Y, KC_U) // ]
 COMB(left_paren_ez, KC_LEFT_PAREN, KC_F, KC_G) // (
 COMB(right_paren_ez, KC_RIGHT_PAREN, KC_H, KC_J) // )
 COMB(left_curly_ez, KC_LCBR, KC_V, KC_B) // {
 COMB(right_curly_ez, KC_RCBR, KC_N, KC_M) // }
+*/
 
+/*
 COMB(hyphen, KC_MINUS, KC_J, KC_M) // -
 COMB(equal, KC_EQUAL, KC_K, KC_COMMA) // =
+*/
 
 /*
 COMB(grave, KC_GRAVE, KC_TAB, KC_Q) // `

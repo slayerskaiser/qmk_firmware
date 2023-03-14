@@ -1,0 +1,64 @@
+// modifiers
+COMB(ctrl_left, KC_LCTL, KC_S, KC_D)
+COMB(alt_left, KC_LALT, KC_X, KC_C)
+COMB(gui_left, KC_LGUI, KC_C, KC_V)
+COMB(shift_left, KC_LSFT, KC_V, KC_B)
+COMB(ctrl_right, KC_LCTL, KC_K, KC_L)
+COMB(alt_right, KC_LALT, KC_COMM, KC_DOT)
+COMB(gui_right, KC_LGUI, KC_M, KC_COMM)
+COMB(shift_right, KC_LSFT, KC_N, KC_M)
+
+/*
+// numbers even
+COMB(comb_0, KC_0, KC_SPC, KC_D)
+COMB(comb_2, KC_2, KC_SPC, KC_F)
+COMB(comb_4, KC_4, KC_SPC, KC_S)
+COMB(comb_6, KC_6, KC_SPC, KC_A)
+COMB(comb_8, KC_8, KC_SPC, KC_V)
+// numbers odd
+COMB(comb_1, KC_1, LAY_NUM, KC_K)
+COMB(comb_3, KC_3, LAY_NUM, KC_J)
+COMB(comb_5, KC_5, LAY_NUM, KC_L)
+COMB(comb_7, KC_7, LAY_NUM, KC_QUOT)
+COMB(comb_9, KC_9, LAY_NUM, KC_M)
+*/
+
+/*
+// symbols right
+COMB(comb_colon, KC_COLN, KC_SPC, KC_H)
+COMB(comb_star, KC_ASTR, KC_SPC, KC_N)
+COMB(comb_exclaim, KC_EXLM, KC_SPC, KC_U)
+COMB(comb_equal, KC_EQL, KC_SPC, KC_J)
+COMB(comb_plus, KC_PLUS, KC_SPC, KC_M)
+COMB(comb_lprn, KC_LPRN, KC_SPC, KC_K)
+COMB(comb_rprn, KC_RPRN, KC_SPC, KC_L)
+COMB(comb_lbrc, KC_LBRC, KC_SPC, KC_COMM)
+COMB(comb_rbrc, KC_RBRC, KC_SPC, KC_DOT)
+COMB(comb_scolon, KC_SCLN, KC_SPC, KC_QUOT)
+// symbols left
+COMB(comb_pipe, KC_PIPE, LAY_NUM, KC_A)
+COMB(comb_tilde, KC_TILD, LAY_NUM, KC_Z)
+COMB(comb_lcbr, KC_LCBR, LAY_NUM, KC_S)
+COMB(comb_rcbr, KC_RCBR, LAY_NUM, KC_D)
+COMB(comb_labk, KC_LABK, LAY_NUM, KC_X)
+COMB(comb_rabk, KC_RABK, LAY_NUM, KC_C)
+COMB(comb_minus, KC_MINS, LAY_NUM, KC_F)
+COMB(comb_underscore, KC_UNDS, LAY_NUM, KC_V)
+COMB(comb_backslash, KC_BSLS, LAY_NUM, KC_G)
+COMB(comb_slash, KC_SLSH, LAY_NUM, KC_B)
+*/
+
+// punctuation
+COMB(backspace, KC_BSPC, KC_I, KC_O)
+COMB(tab, KC_TAB, KC_W, KC_E)
+COMB(delete, KC_DEL, KC_F, KC_G)
+COMB(escape, KC_ESC, KC_D, KC_F)
+COMB(enter, KC_ENTER, KC_J, KC_K, KC_L)
+COMB(minus, KC_MINS, KC_J, KC_K)
+COMB(equal, KC_EQL, KC_U, KC_I)
+COMB(semicolon, KC_SCLN, KC_K, KC_M)
+
+// other
+COMB(capsword, CAPSWORD, KC_D, KC_K)
+COMB(mouse, TO_MOUSE, KC_F, KC_J)
+COMB(numbers, TO_NUM, KC_S, KC_L)
