@@ -233,11 +233,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 /* TEST,    _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK,  DVORAK,  PLOVER,  ONEPDCT, */
 [_ADJUST] = LAYOUT_planck_grid(
-    _______, QK_BOOT, _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
-    TEST,    _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  XXXXXXX,  DVORAK,  PLOVER,  XXXXXXX,
-    _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______,  KC_BRMD, KC_BRMU, _______
+    _______, QK_BOOT, DB_TOGG, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, KC_DEL ,
+    TEST,    _______, MU_NEXT, AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  XXXXXXX, DVORAK,  PLOVER,  XXXXXXX,
+    _______, AU_PREV, AU_NEXT, MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_BRMD, KC_BRMU, _______
 ),
+/* _______, QK_BOOT, _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL , */
+/* TEST,    _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  XXXXXXX,  DVORAK,  PLOVER,  XXXXXXX, */
+/* _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______, */
+/* _______, _______, _______, _______, _______, _______, _______, _______, _______,  KC_BRMD, KC_BRMU, _______ */
 
 /* Movement
  * ,-----------------------------------------------------------------------------------.
@@ -323,7 +327,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* _______, KC_AMPR, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, KC_0,    KC_1,    KC_2,    KC_3,    KC_E,    _______, */
 [_TEST_MOD] = LAYOUT_planck_grid(
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PIPE, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_DEL, C(KC_BSPC),
-    KC_GRV,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_BSLS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
+    KC_GRV,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_BSLS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, KC_BSPC,
     XXXXXXX, T_CTRL,  T_ALT,   T_GUI,   T_SHIFT, XXXXXXX, XXXXXXX, T_SHIFT, T_GUI,   T_ALT,   T_CTRL,  XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
@@ -420,7 +424,7 @@ bool process_num_word(uint16_t keycode, keyrecord_t *record) {
     case KC_BSPC:
     case BSP_MOD:
     case KC_COMM:
-    case KC_SPC:
+    case KC_TAB:
     case KC_DOT:
     case DT_EXLM:
     case KC_MINS:
