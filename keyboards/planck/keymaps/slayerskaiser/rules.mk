@@ -1,7 +1,7 @@
 BOOTLOADER = stm32-dfu
 VPATH += keyboards/gboards
-SRC += features/achordion.c
-SRC += tap_hold.c
+# SRC += features/achordion.c
+# SRC += tap_hold.c
 BOOTMAGIC_ENABLE = yes
 AUDIO_ENABLE = no
 RGBLIGHT_ENABLE = no
