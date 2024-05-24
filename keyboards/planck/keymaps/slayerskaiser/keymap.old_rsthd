@@ -34,6 +34,10 @@ enum planck_layers {
   _TEST,
   _TEST_MOD,
   _TEST_NAV,
+  _WIN_NAV,
+  _TEST_NUM,
+  _TEST_MOUSE,
+  _TEST_FUN,
 };
 
 enum planck_keycodes {
@@ -42,11 +46,16 @@ enum planck_keycodes {
   DVORAK,
   /* ONEPDCT, */
   TEST,
-  TEST_FN,
   PLOVER,
   BACKLIT,
   EXT_PLV,
   EX_TEST,
+  DT_EXLM,
+  WIN_ALT,
+  NUMWORD,
+  NCANCEL,
+  SWP_S_E,
+  SPC_NUM,
 };
 
 #define LOWER MO(_LOWER)
@@ -55,31 +64,19 @@ enum planck_keycodes {
 #define C_ESC LCTL_T(KC_ESC)
 #define SFT_ENT RSFT_T(KC_ENTER)
 
-/* test layout config */
-/* #define SPC_MOD LT(_TEST_MOD, KC_SPC) */
-#define SPC_MOD LT(0, KC_SPC)
+/* #define T_MOVE MO(_TEST_MOUSE) */
+#define T_MOVE TG(_TEST_MOUSE)
+#define T_NUM MO(_TEST_NUM)
+#define T_FUN MO(_TEST_FUN)
+#define T_SHIFT OSM(MOD_LSFT)
+#define T_RSHFT OSM(MOD_RSFT)
+#define T_CTRL OSM(MOD_LCTL)
+#define T_ALT OSM(MOD_LALT)
+#define T_GUI OSM(MOD_LGUI)
+
+#define SPC_MOD LT(_TEST_MOD, KC_SPC)
 #define BSP_MOD LT(_TEST_MOD, KC_BSPC)
-#define LSFT_OS OSM(MOD_LSFT)
-#define RSFT_OS OSM(MOD_RSFT)
-/* #define ENT_NAV LT(_TEST_NAV, KC_ENT) */
-#define ENT_NAV LT(0, KC_ENT)
-/* #define SFT_BSP LSFT_T(KC_BSPC) */
-/* #define SFT_QUO RSFT_T(KC_QUOT) */
-/* #define ALT_Z LALT_T(KC_Z) */
-/* #define ALT_SSH RALT_T(KC_SLSH) */
-/* #define CTL_TAB LCTL_T(KC_TAB) */
-#define SFT_BSP LT(0, KC_BSPC)
-#define SFT_QUO LT(0, KC_QUOT)
-/* #define ALT_Z LT(0, KC_Z) */
-/* #define ALT_SSH LT(0, KC_SLSH) */
-#define CTL_TAB LT(0, KC_TAB)
-#define ESC_EQL LT(0, KC_EQL)
-#define GUI_Z LT(0, KC_Z)
-#define ALT_X LT(0, KC_X)
-#define CTL_C LT(0, KC_C)
-#define GUI_SSH LT(0, KC_SLSH)
-#define ALT_DOT LT(0, KC_DOT)
-#define CTL_COM LT(0, KC_COMM)
+#define ENT_NAV LT(_TEST_NAV, KC_ENT)
 
 /* enum { */
 /*     COM_MIN, */
@@ -93,7 +90,7 @@ enum planck_keycodes {
 /*     uint16_t held; */
 /* } tap_dance_tap_hold_t; */
 
-/* #include "g/keymap_combo.h" */
+#include "g/keymap_combo.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -151,6 +148,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MOVE,    KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
+/* Oneproduct
+ * ,-----------------------------------------------------------------------------------.
+ * | Tab  |   B  |   L  |   D  |   W  |   G  |   J  |   ,  |   O  |   Y  |   Q  | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Esc  |   N  |   R  |   S  |   T  |   M  |   U  |   A  |   E  |   I  |   H  |  "   |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Shift|   P  |   Z  |   C  |   F  |   V  |   X  |   .  |   ;  |   /  |   K  |Shift |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Move | Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * `-----------------------------------------------------------------------------------'
+ */
+/* [_ONEPRODUCT] = LAYOUT_planck_grid( */
+/*     KC_TAB,  KC_B,    KC_L,    KC_D,    KC_W,    KC_G,    KC_J,    KC_COMM, KC_O,    KC_Y,    KC_Q,    KC_BSPC, */
+/*     C_ESC,   KC_N,    KC_R,    KC_S,    KC_T,    KC_M,    KC_U,    KC_A,    KC_E,    KC_I,    KC_H,    KC_QUOT, */
+/*     KC_LSFT, KC_P,    KC_Z,    KC_C,    KC_F,    KC_V,    KC_X,    KC_DOT,  KC_SCLN, KC_SLSH, KC_K,    SFT_ENT, */
+/*     MOVE,    KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT */
+/* ), */
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
@@ -211,7 +225,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      | Reset|      | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | TEST |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|      |Dvorak|Plover|      |
+ * |      |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|Plover|1Prdct|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -225,6 +239,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,  KC_BRMD, KC_BRMU, _______
 ),
+/* _______, QK_BOOT, DB_TOGG, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, KC_DEL , */
+/* TEST,    _______, MU_NEXT, AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  XXXXXXX, DVORAK,  PLOVER,  XXXXXXX, */
+/* _______, AU_PREV, AU_NEXT, MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______, */
+/* _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_BRMD, KC_BRMU, _______ */
+/* _______, QK_BOOT, _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL , */
+/* TEST,    _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  XXXXXXX,  DVORAK,  PLOVER,  XXXXXXX, */
+/* _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______, */
+/* _______, _______, _______, _______, _______, _______, _______, _______, _______,  KC_BRMD, KC_BRMU, _______ */
+/* _______, QK_BOOT,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL , */
+/* _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK,  DVORAK,  PLOVER,  _______, */
+/* _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______, */
+/* _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______ */
 
 /* Movement
  * ,-----------------------------------------------------------------------------------.
@@ -273,39 +299,119 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |Qwerty|      |  NUM |Space |Enter |             | BkSp |      |  FUN |      |      |
  * `-----------------------------------------------------------------------------------'
  */
+/* KC_ESC,  QHOME_A, QHOME_S, QHOME_D, QHOME_F, KC_G,    KC_H,    QHOME_J, QHOME_K, QHOME_L, QHOME_SC, KC_QUOT, */
+/* T_SHIFT, TD(Z_GUI),    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TD(COM_MIN), TD(DOT_UND), TD(SLS_EQL), T_RSHFT, */
+/* KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, */
+/* EX_TEST, XXXXXXX, T_NUM,   KC_SPC,  KC_ENT,  XXXXXXX, XXXXXXX, KC_BSPC, XXXXXXX, T_MOVE,  XXXXXXX, XXXXXXX */
+/* EX_TEST, XXXXXXX, T_NUM,   SPC_MOD, KC_ENT,  XXXXXXX, XXXXXXX, KC_BSPC, XXXXXXX, T_MOVE,  XXXXXXX, XXXXXXX */
+
+/* KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, */
+/* KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, */
+/* KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, */
+
+/* EX_TEST, XXXXXXX, T_NUM,   KC_ENT,  KC_E, XXXXXXX, XXXXXXX, KC_BSPC, SPC_MOD,  T_MOVE,  XXXXXXX, XXXXXXX */
+/* EX_TEST, XXXXXXX, T_NUM,   KC_ENT,  SPC_MOD, XXXXXXX, XXXXXXX, KC_E,    KC_BSPC, T_MOVE,  XXXXXXX, XXXXXXX */
+
+/* KC_TAB,  KC_J,    KC_C,    KC_Y,    KC_F,    KC_K,    KC_Z,    KC_L,    KC_O,    KC_U,    KC_Q,    KC_EQL , */
+/* KC_ESC,  KC_R,    KC_S,    KC_T,    KC_H,    KC_P,    KC_M,    KC_N,    KC_A,    KC_I,    KC_MINS, KC_QUOT, */
+/* T_SHIFT, KC_SLSH, KC_V,    KC_G,    KC_D,    KC_B,    KC_X,    KC_W,    KC_DOT,  KC_COMM, KC_SCLN, T_RSHFT, */
+
+/* KC_TAB,  KC_J,    KC_C,    KC_Y,    KC_F,    KC_K,    KC_Z,    KC_L,    KC_COMM, KC_U,    KC_Q,    KC_EQL , */
+/* KC_ESC,  KC_R,    KC_S,    KC_T,    KC_H,    KC_P,    KC_M,    KC_N,    KC_A,    KC_I,    KC_O,    KC_QUOT, */
+/* T_SHIFT, KC_SLSH, KC_V,    KC_G,    KC_D,    KC_B,    KC_X,    KC_W,    KC_DOT,  KC_SCLN, KC_MINS, T_RSHFT, */
+
+/* EX_TEST, XXXXXXX, T_NUM,   ENT_NAV, KC_E,    XXXXXXX, XXXXXXX, SPC_MOD, KC_BSPC, T_FUN,   XXXXXXX, XXXXXXX */
+/* EX_TEST, XXXXXXX, T_NUM,   ENT_NAV, KC_E,    XXXXXXX, XXXXXXX, KC_SPC,  BSP_MOD, T_FUN,   XXXXXXX, XXXXXXX */
+/* EX_TEST, XXXXXXX, T_NUM,   ENT_NAV, KC_SPC,  XXXXXXX, XXXXXXX, KC_E,    BSP_MOD, T_FUN,   XXXXXXX, XXXXXXX */
 
 [_TEST] = LAYOUT_planck_grid(
-	/* KC_TAB,  KC_J,    KC_C,    KC_Y,    KC_F,    KC_K,    KC_Z,    KC_L,    KC_COMM, KC_U,    KC_Q,    KC_EQL , */
-	/* KC_ESC,  KC_R,    KC_S,    KC_T,    KC_H,    KC_P,    KC_M,    KC_N,    KC_A,    KC_I,    KC_O,    KC_QUOT, */
-	/* T_SHIFT, KC_SLSH, KC_V,    KC_G,    KC_D,    KC_B,    KC_X,    KC_W,    DT_EXLM, KC_SCLN, KC_MINS, T_RSHFT, */
-    /* EX_TEST, XXXXXXX, T_NUM,   ENT_NAV, KC_SPC,  XXXXXXX, XXXXXXX, KC_E,    BSP_MOD, T_FUN,   XXXXXXX, XXXXXXX */
-    ESC_EQL, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
-    KC_BSPC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    LSFT_OS, GUI_Z,   ALT_X,   CTL_C,   KC_V,    KC_B,    KC_N,    KC_M,    CTL_COM, ALT_DOT, GUI_SSH, RSFT_OS,
-    /* SFT_BSP, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, SFT_QUO, */
-    /* KC_LGUI, ALT_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  ALT_SSH, KC_RCTL, */
-    /* EX_TEST, XXXXXXX, XXXXXXX, ENT_NAV, CTL_TAB, XXXXXXX, BSP_MOD, KC_SPC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX */
-    EX_TEST, XXXXXXX, XXXXXXX, ENT_NAV, CTL_TAB, XXXXXXX, SFT_BSP, SPC_MOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-    /* EX_TEST, XXXXXXX, XXXXXXX, XXXXXXX, SFT_OSM, CTL_TAB, CTL_TAB, SPC_MOD, ENT_NAV, XXXXXXX, XXXXXXX, XXXXXXX */
+	KC_TAB,  KC_J,    KC_C,    KC_Y,    KC_F,    KC_K,    KC_Z,    KC_L,    KC_COMM, KC_U,    KC_Q,    KC_EQL ,
+	KC_ESC,  KC_R,    KC_S,    KC_T,    KC_H,    KC_P,    KC_M,    KC_N,    KC_A,    KC_I,    KC_O,    KC_QUOT,
+	T_SHIFT, KC_SLSH, KC_V,    KC_G,    KC_D,    KC_B,    KC_X,    KC_W,    DT_EXLM, KC_SCLN, KC_MINS, T_RSHFT,
+    EX_TEST, XXXXXXX, T_NUM,   ENT_NAV, KC_SPC,  XXXXXXX, XXXXXXX, KC_E,    BSP_MOD, T_FUN,   XXXXXXX, XXXXXXX
 ),
 
+/* KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_PLUS, KC_7,    KC_8,    KC_9,    KC_ASTR, KC_BSPC, */
+/* KC_DEL,  KC_CIRC, KC_LT,   KC_LPRN, KC_RPRN, KC_GT,   KC_MINS, KC_4,    KC_5,    KC_6,    KC_SLSH, KC_EQL , */
+/* _______, KC_AMPR, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, KC_0,    KC_1,    KC_2,    KC_3,    KC_E,    _______, */
 [_TEST_MOD] = LAYOUT_planck_grid(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_INS,  XXXXXXX,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  XXXXXXX,
-    KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT,  _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-    /* XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX */
+    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PIPE, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_DEL, C(KC_BSPC),
+    KC_GRV,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_BSLS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, KC_BSPC,
+    XXXXXXX, T_CTRL,  T_ALT,   T_GUI,   T_SHIFT, XXXXXXX, XXXXXXX, T_SHIFT, T_GUI,   T_ALT,   T_CTRL,  XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 [_TEST_NAV] = LAYOUT_planck_grid(
-    /* KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, XXXXXXX, KC_7,    KC_8,    KC_9, KC_GRV,  KC_BSLS, */
-    /* KC_LSFT, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, XXXXXXX, KC_4,    KC_5,    KC_6, KC_DEL,  KC_BSPC, */
-    /* _______, KC_LALT, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, XXXXXXX, KC_1,    KC_2,    KC_3, KC_DOT,  KC_ENT, */
-    KC_ESC,  KC_EXLM, KC_AT,   KC_LBRC, KC_RBRC, KC_CIRC, XXXXXXX, KC_7,    KC_8,    KC_9, KC_GRV,  KC_BSLS,
-    KC_LCTL, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_AMPR, XXXXXXX, KC_4,    KC_5,    KC_6, KC_DEL,  KC_BSPC,
-    KC_LALT, KC_LGUI, KC_PERC, KC_LCBR, KC_RCBR, KC_ASTR, XXXXXXX, KC_1,    KC_2,    KC_3, KC_DOT,  KC_ENT,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TEST_FN, XXXXXXX, KC_BSPC, KC_0,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-    /* XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TEST_FN, XXXXXXX, XXXXXXX, KC_0,    KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX */
+    XXXXXXX, XXXXXXX, C(S(KC_TAB)), KC_UP, C(KC_TAB), XXXXXXX, XXXXXXX, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, XXXXXXX,
+    XXXXXXX, WIN_ALT, KC_LEFT, KC_DOWN, KC_RGHT,      XXXXXXX, XXXXXXX, KC_LT,   KC_LPRN, KC_RPRN, KC_GT,   XXXXXXX,
+    XXXXXXX, T_CTRL,  T_ALT,   T_GUI,   T_SHIFT,      XXXXXXX, XXXXXXX, T_SHIFT, T_GUI,   T_ALT,   T_CTRL,  XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+),
+
+[_WIN_NAV] = LAYOUT_planck_grid(
+    XXXXXXX, XXXXXXX, S(KC_TAB), XXXXXXX, KC_TAB, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+),
+
+
+/* Lower layer for test layout
+ * ,-----------------------------------------------------------------------------------.
+ * |   `  |   !  |   @  |   #  |   $  |   %  |   +  |   7  |   8  |   9  |   *  | BkSp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |  Del |   ^  |   <  |   (  |   )  |   >  |   -  |   4  |   5  |   6  |   /  |   =  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |Shift |   &  |   {  |   [  |   ]  |   }  |   0  |   1  |   2  |   3  |   E  |Shift |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+/* KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_PLUS, KC_7,    KC_8,    KC_9,    KC_ASTR, KC_BSPC, */
+/* KC_DEL,  KC_CIRC, KC_LT,   KC_LPRN, KC_RPRN, KC_GT,   KC_MINS, KC_4,    KC_5,    KC_6,    KC_SLSH, KC_EQL , */
+/* _______, KC_AMPR, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, KC_0,    KC_1,    KC_2,    KC_3,    KC_E,    _______, */
+/* XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, T_MOVE,  XXXXXXX, XXXXXXX */
+[_TEST_NUM] = LAYOUT_planck_grid(
+    KC_TAB,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_COMM, XXXXXXX, XXXXXXX, XXXXXXX,
+    NCANCEL, KC_6,    KC_4,    KC_0,    KC_2,    SPC_NUM, XXXXXXX, KC_3,    KC_1,    KC_5,    KC_7,    XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_8,    XXXXXXX, XXXXXXX, KC_9,    KC_DOT,  XXXXXXX, KC_MINS, XXXXXXX,
+    XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, T_MOVE,  XXXXXXX, XXXXXXX
+),
+
+/* Raise layer for test layout
+ * ,-----------------------------------------------------------------------------------.
+ * |  Tab |      | Mute |Vol Dn|Vol Up|      |  F12 |  F7  |  F8  |  F9  |  Del | BkSp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |  Esc | Ctrl | Alt  | GUI  |Shift |      |  F11 |  F4  |  F5  |  F6  |   |  |   \  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |BritDn|BritUp|M Prev|M Play|M Next|      |  F10 |  F1  |  F2  |  F3  |      |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_TEST_FUN] = LAYOUT_planck_grid(
+    KC_TAB,  XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_DEL,  KC_BSPC,
+    KC_ESC,  T_CTRL,  T_ALT,   T_GUI,   T_SHIFT, XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_PIPE, KC_BSLS,
+    KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_F10,  KC_F1,   KC_F2,   KC_F3,   XXXXXXX, KC_ENT ,
+    XXXXXXX, XXXXXXX, T_MOVE,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX
+),
+
+/* Mouse layer for test layout
+ * ,-----------------------------------------------------------------------------------.
+ * |  Tab |PageUp|MWhl L|Mous U|MWhl R|      |      |MousA0|MousA1|MousA2|  Del | BkSp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |  Esc |PageDn|Mous L|Mous D|Mous R|      | Left | Down |  Up  |Right |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |Shift | Home |  End |MWhl U|MWhl D|      |      |MousLC|MousMC|MousRC|      |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      | Ctrl |  Alt |             |Space |  GUI |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_TEST_MOUSE] = LAYOUT_planck_grid(
+    KC_TAB,  KC_PGUP, KC_WH_L, KC_MS_U, KC_WH_R, XXXXXXX, XXXXXXX, KC_ACL0, KC_ACL1, KC_ACL2, KC_DEL,  KC_BSPC,
+    KC_ESC,  KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
+    T_SHIFT, KC_HOME, KC_END,  KC_WH_U, KC_WH_D, XXXXXXX, XXXXXXX, KC_BTN1, KC_BTN3, KC_BTN2, XXXXXXX, KC_ENT ,
+    XXXXXXX, XXXXXXX, T_MOVE,  T_CTRL,  T_ALT,   XXXXXXX, XXXXXXX, KC_SPC,  T_GUI,   T_MOVE,  XXXXXXX, XXXXXXX
 )
 
 };
@@ -316,6 +422,38 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   state = update_tri_layer_state(state, _LOWER, _MOVEMENT, _NUMPAD);
   /* state = update_tri_layer_state(state, _TEST_NUM, _TEST_MOUSE, _TEST_FUN); */
   return state;
+}
+
+static bool _num_word_enabled;
+bool process_num_word(uint16_t keycode, keyrecord_t *record) {
+    if (!_num_word_enabled) return true;
+
+    switch (keycode) {
+    case KC_1 ... KC_0:
+    case KC_BSPC:
+    case BSP_MOD:
+    case SPC_NUM:
+    case KC_COMM:
+    case KC_TAB:
+    case KC_DOT:
+    case DT_EXLM:
+    case KC_MINS:
+    case KC_E:
+        break;
+    case NCANCEL:
+        if (record->event.pressed) {
+            _num_word_enabled = false;
+            layer_off(_TEST_NUM);
+        }
+        return false;
+    default:
+        if (record->event.pressed) {
+            _num_word_enabled = false;
+            layer_off(_TEST_NUM);
+        }
+    }
+
+    return true;
 }
 
 /* // tap hold */
@@ -351,9 +489,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 /* } */
 
 bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
-    /* if (!process_num_word(keycode, record)) { */
-    /*     return false; */
-    /* } */
+    if (!process_num_word(keycode, record)) {
+        return false;
+    }
     /* if (!process_tap_hold(keycode, record)) { */
     /*     // Extra register here to allow fast rolls without waiting for tap hold, */
     /*     // (which will also overwrite this). */
@@ -366,19 +504,59 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+static bool swap_space_e_keys = false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   /* if (!process_achordion(keycode, record)) { return false; } */
   /* qk_tap_dance_action_t *action; */
-	 /* uint8_t mod_state = get_mods(); */
-	 /* uint8_t oneshot_mod_state = get_oneshot_mods(); */
+	 uint8_t mod_state = get_mods();
+	 uint8_t oneshot_mod_state = get_oneshot_mods();
 
      /* bool res = process_num_word(keycode, record); */
      bool res = _process_record_user(keycode, record);
 
-     static bool test_fn_is_held = false;
-     static uint8_t num_to_fn_keycode = KC_F1 - KC_1;
-
   switch (keycode) {
+    /* case TD(COM_MIN): */
+    /* case TD(DOT_UND): */
+    /* case TD(SLS_EQL): */
+    /* case TD(Z_GUI): */
+        /* action = &tap_dance_actions[TD_INDEX(keycode)]; */
+        /* if (!record->event.pressed && action->state.count && !action->state.finished) { */
+        /*     tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data; */
+        /*     tap_code16(tap_hold->tap); */
+        /* } */
+        /* break; */
+  case DT_EXLM: ;
+	   static bool dot_registered = false;
+	   if (record->event.pressed) {
+			if (mod_state & MOD_MASK_SHIFT || oneshot_mod_state & MOD_MASK_SHIFT) {
+				 register_code(KC_1); // shifted 1 is !
+				 dot_registered = true;
+			} else {
+				 register_code(KC_DOT);
+				 dot_registered = false;
+			}
+	   } else {
+			if (dot_registered) {
+				 unregister_code(KC_1);
+				 dot_registered = false;
+			} else {
+				 unregister_code(KC_DOT);
+			}
+	   }
+	   return false;
+	   break;
+  case WIN_ALT:
+      if (record->event.pressed) {
+          register_code(KC_LALT);
+          tap_code16(KC_TAB);
+          layer_on(_WIN_NAV);
+      } else {
+          layer_off(_WIN_NAV);
+          unregister_code(KC_LALT);
+      }
+      return false;
+      break;
   case TEST:
 	   if (record->event.pressed) {
             default_layer_set(1 << _TEST);
@@ -456,174 +634,56 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	   }
 	   return false;
 	   break;
-  case ESC_EQL:
-      if (!record->tap.count && record->event.pressed) {
-          tap_code(KC_ESC);
-          return false;
-      }
-      return true;
-      break;
-  case ENT_NAV:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              layer_on(_TEST_NAV);
-          } else {
-              layer_off(_TEST_NAV);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case SPC_MOD:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              layer_on(_TEST_MOD);
-          } else {
-              layer_off(_TEST_MOD);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case SFT_BSP:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              register_code(KC_LSFT);
-          } else {
-              unregister_code(KC_LSFT);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case SFT_QUO:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              register_code(KC_RSFT);
-          } else {
-              unregister_code(KC_RSFT);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case GUI_Z:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              register_code(KC_LGUI);
-          } else {
-              unregister_code(KC_LGUI);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case ALT_X:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              register_code(KC_LALT);
-          } else {
-              unregister_code(KC_LALT);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case CTL_C:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              register_code(KC_LCTL);
-          } else {
-              unregister_code(KC_LCTL);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case GUI_SSH:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              register_code(KC_RGUI);
-          } else {
-              unregister_code(KC_RGUI);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case ALT_DOT:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              register_code(KC_RALT);
-          } else {
-              unregister_code(KC_RALT);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case CTL_COM:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              register_code(KC_RCTL);
-          } else {
-              unregister_code(KC_RCTL);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case CTL_TAB:
-      if (!record->tap.count) {
-          if (record->event.pressed) {
-              register_code(KC_LCTL);
-          } else {
-              unregister_code(KC_LCTL);
-          }
-          return false;
-      }
-      return true;
-      break;
-  case TEST_FN:
-      test_fn_is_held = record->event.pressed;
-      return false;
-      break;
-  case KC_1 ... KC_0:
-      {
-          static uint16_t registered_key = KC_NO;
-          if (record->event.pressed) {
-              registered_key = (test_fn_is_held) ? keycode + num_to_fn_keycode : keycode;
-              register_code(registered_key);
-          } else {
-              unregister_code(registered_key);
-          }
+  case NUMWORD:
+      /* static uint16_t num_word_timer; */
+      if (record->event.pressed) {
+          _num_word_enabled = true;
+          layer_on(_TEST_NUM);
+          /* num_word_timer = timer_read(); */
+      } else {
+        /*   if (timer_elapsed(num_word_timer) < TAPPING_TERM) { */
+        /*       // Tapping enables NUMWORD */
+        /*       _num_word_enabled = true; */
+        /*   } else { */
+        /*       // Holding turns off NUM when released */
+        /*       layer_off(_TEST_NUM); */
+        /* } */
       }
       return false;
       break;
-  case KC_GRV:
-      {
-          static uint16_t registered_key = KC_NO;
-          if (record->event.pressed) {
-              registered_key = (test_fn_is_held) ? KC_F11 : keycode;
-              register_code(registered_key);
-          } else {
-              unregister_code(registered_key);
-          }
+  case SWP_S_E:
+      if (record->event.pressed) {
+          swap_space_e_keys = !swap_space_e_keys;
       }
       return false;
       break;
-  case KC_BSLS:
-      {
-          static uint16_t registered_key = KC_NO;
+  case KC_SPC:
+      if (swap_space_e_keys) {
           if (record->event.pressed) {
-              registered_key = (test_fn_is_held) ? KC_F12 : keycode;
-              register_code(registered_key);
+              register_code16(KC_E);
           } else {
-              unregister_code(registered_key);
+              unregister_code16(KC_E);
           }
+          return false;
+      }
+      break;
+  case KC_E:
+      if (swap_space_e_keys) {
+          if (record->event.pressed) {
+              register_code16(KC_SPC);
+          } else {
+              unregister_code16(KC_SPC);
+          }
+          return false;
+      }
+      break;
+  case SPC_NUM:
+      if (record->event.pressed) {
+          register_code16(KC_SPC);
+      } else {
+          unregister_code16(KC_SPC);
       }
       return false;
-      break;
   }
   /* return true; */
   return res;
@@ -632,50 +692,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case ENT_NAV:
-    case CTL_TAB:
-    case BSP_MOD:
         return TAPPING_TERM + 100;
     case SPC_MOD:
-        return TAPPING_TERM + 200;
-    case SFT_BSP:
-    case SFT_QUO:
-    case GUI_Z:
-    case ALT_X:
-    case CTL_C:
-    case GUI_SSH:
-    case ALT_DOT:
-    case CTL_COM:
-        return TAPPING_TERM + 200;
-    case ESC_EQL:
+        return TAPPING_TERM + 100;
+    case BSP_MOD:
         return TAPPING_TERM + 100;
     default:
         return TAPPING_TERM;
-    }
-}
-
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    /* case SFT_BSP: */
-    /* case SFT_QUO: */
-    /* case ALT_Z: */
-    /* case ALT_SSH: */
-    /*     // Immediately select the hold action when another key is tapped. */
-    /*     return true; */
-    default:
-        // Do not select the hold action when another key is tapped.
-        return false;
-    }
-}
-
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    /* case SFT_BSP: */
-    /* case SFT_QUO: */
-    /*     // Immediately select the hold action when another key is pressed. */
-    /*     return true; */
-    default:
-        // Do not select the hold action when another key is pressed.
-        return false;
     }
 }
 

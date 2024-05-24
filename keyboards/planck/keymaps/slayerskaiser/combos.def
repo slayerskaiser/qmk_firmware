@@ -2,10 +2,10 @@
 // COMB(dollar, KC_DOLLAR, DT_EXLM, KC_SCLN)
 // COMB(num_word, NUMWORD, KC_T, KC_A)
 // COMB(num_word, NUMWORD, KC_W, KC_SCLN)
-COMB(circumflex, KC_CIRCUMFLEX, DT_EXLM, KC_SCLN)
-COMB(dollar, KC_DOLLAR, KC_SCLN, KC_MINS)
-COMB(num_word, NUMWORD, KC_SLSH, DT_EXLM)
-COMB(swap_space_e, SWP_S_E, KC_SLSH, KC_MINS)
+// COMB(circumflex, KC_CIRCUMFLEX, DT_EXLM, KC_SCLN)
+// COMB(dollar, KC_DOLLAR, KC_SCLN, KC_MINS)
+// COMB(num_word, NUMWORD, KC_SLSH, DT_EXLM)
+// COMB(swap_space_e, SWP_S_E, KC_SLSH, KC_MINS)
 
 /*
 COMB(num1, KC_1, ENT_NAV, KC_A)
